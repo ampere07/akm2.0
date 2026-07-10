@@ -19,6 +19,7 @@ const usernameComponents = [
   { type: 'lcp', label: 'LCP' },
   { type: 'nap', label: 'NAP' },
   { type: 'port', label: 'Port' },
+  { type: 'date_installed', label: 'Date Installed' },
   { type: 'tech_input', label: 'Tech Input' }
 ];
 

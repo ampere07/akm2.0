@@ -60,10 +60,18 @@ const EditLocationModal: React.FC<EditLocationModalProps> = ({
     fetchColorPalette();
   }, []);
 
+  // Populate the editable name ONLY when the target location (by id) changes or the
+  // modal opens — never when allLocations changes. Previously this lived in the effect
+  // below (which depends on allLocations): every keystroke re-renders, hands us a new
+  // allLocations reference, re-runs the effect, and reset the input back to location.name.
   useEffect(() => {
     if (location && isOpen) {
       setEditedName(location.name);
+    }
+  }, [location?.id, isOpen]);
 
+  useEffect(() => {
+    if (location && isOpen) {
       console.log('=== EDIT LOCATION MODAL DEBUG ===');
       console.log('Location data:', location);
       console.log('All locations count:', allLocations.length);

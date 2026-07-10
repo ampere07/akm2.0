@@ -1212,7 +1212,7 @@ const ApplicationManagement: React.FC<ApplicationManagementProps> = ({ onNavigat
                     console.error('Failed to parse authData');
                   }
                 }
-                const url = email ? `https://apply.atssfiber.ph?created_by_email=${encodeURIComponent(email)}` : 'https://apply.syncnow.ph';
+                const url = email ? `https://apply.akmiis.com?created_by_email=${encodeURIComponent(email)}` : 'https://apply.akmiis.com';
                 window.open(url, '_blank', 'noopener,noreferrer');
               }}
               className="px-2.5 py-1 text-xs font-medium rounded flex items-center transition-colors shadow-sm text-white hover:opacity-90"

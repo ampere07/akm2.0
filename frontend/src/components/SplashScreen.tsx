@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import atsslogo from '../assets/atsslogo.png';
+import akmlogo from '../assets/akmlogo.png';
 import { settingsColorPaletteService, ColorPalette } from '../services/settingsColorPaletteService';
 
 const SplashScreen: React.FC = () => {
@@ -35,7 +35,7 @@ const SplashScreen: React.FC = () => {
         gap: '20px'
       }}>
         <img
-          src={atsslogo}
+          src={akmlogo}
           alt="AKM Fiber Logo"
           style={{
             height: '80px',

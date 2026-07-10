@@ -501,6 +501,7 @@ class JobOrderController extends Controller
                         'lcp' => trim($lcpnapData->lcp ?? ''),
                         'nap' => trim($lcpnapData->nap ?? ''),
                         'port' => trim($portValue ?? ''),
+                        'date_installed' => $jobOrder->date_installed ?? now(),
                         'tech_input_username' => $request->input('pppoe_username'),
                         'custom_password' => $request->input('custom_password'),
                     ];
@@ -546,6 +547,7 @@ class JobOrderController extends Controller
                         'lcp' => trim($lcpnapData->lcp ?? ''),
                         'nap' => trim($lcpnapData->nap ?? ''),
                         'port' => trim($portValue ?? ''),
+                        'date_installed' => $jobOrder->date_installed ?? now(),
                         'tech_input_username' => $request->input('tech_input_username'),
                         'custom_password' => $request->input('custom_password'),
                     ];
@@ -590,6 +592,7 @@ class JobOrderController extends Controller
                         'lcp' => trim($lcpnapData->lcp ?? ''),
                         'nap' => trim($lcpnapData->nap ?? ''),
                         'port' => trim($portValue ?? ''),
+                        'date_installed' => $jobOrder->date_installed ?? now(),
                         'tech_input_username' => $request->input('tech_input_username'),
                         'custom_password' => $request->input('custom_password'),
                     ];
@@ -1815,8 +1818,9 @@ class JobOrderController extends Controller
                     'lcp' => $lcpValue,
                     'nap' => $napValue,
                     'port' => $portValue,
+                    'date_installed' => $jobOrder->date_installed ?? now(),
                 ];
-                
+
                 $pppoeUsername = $pppoeService->generateUniqueUsername($customerData, $id);
                 $pppoePassword = $pppoeService->generatePassword($customerData);
                 

@@ -250,7 +250,7 @@ const Support: React.FC<SupportProps> = ({ forceLightMode }) => {
   };
 
   const handleRequestPlanUpdate = () => {
-    window.open('https://www.facebook.com/atssfiber2022', '_blank');
+    window.open('https://www.facebook.com/akmiis', '_blank');
   };
 
   const currentRequests = requests.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);

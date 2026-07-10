@@ -1,19 +1,19 @@
 {
-  "short_name": "ATSS Fiber",
-  "name": "ATSS Fiber - Customer Billing Management",
+  "short_name": "AKM iis",
+  "name": "AKM iis - Customer Billing Management",
   "icons": [
     {
-      "src": "atsslogo.png",
+      "src": "akmlogo.png",
       "type": "image/png",
       "sizes": "64x64 32x32 24x24 16x16"
     },
     {
-      "src": "atsslogo.png",
+      "src": "akmlogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "atsslogo.png",
+      "src": "akmlogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

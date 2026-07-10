@@ -444,11 +444,11 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onSearch, onNavigate, 
           <div className="flex items-center">
             {/* Logo Section */}
             {logoUrl ? (
-              <img src={logoUrl} alt="ATSS Fiber" className="h-10 object-contain" />
+              <img src={logoUrl} alt="AKM iis" className="h-10 object-contain" />
             ) : (
               <div className="flex items-center">
-                <span className="text-slate-900 font-bold text-lg tracking-tight hidden sm:inline uppercase">ATSS <span className="font-black">FIBER</span></span>
-                <span className="text-slate-900 font-bold text-lg tracking-tight sm:hidden uppercase">ATSS FIBER</span>
+                <span className="text-slate-900 font-bold text-lg tracking-tight hidden sm:inline uppercase">AKM <span className="font-black">iis</span></span>
+                <span className="text-slate-900 font-bold text-lg tracking-tight sm:hidden uppercase">AKM iis</span>
               </div>
             )}
           </div>
