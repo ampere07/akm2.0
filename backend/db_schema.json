@@ -164,7 +164,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "log_id",
                 "Collation": "A",
-                "Cardinality": 2672,
+                "Cardinality": 2670,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -260,7 +260,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "created_at",
                 "Collation": "A",
-                "Cardinality": 2672,
+                "Cardinality": 2670,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -271,7 +271,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `activity_logs` (\n  `log_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `level` varchar(50) NOT NULL,\n  `action` varchar(100) NOT NULL,\n  `message` text NOT NULL,\n  `user_id` bigint(20) unsigned DEFAULT NULL,\n  `target_user_id` bigint(20) unsigned DEFAULT NULL,\n  `resource_type` varchar(100) DEFAULT NULL,\n  `resource_id` bigint(20) unsigned DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `user_agent` text DEFAULT NULL,\n  `additional_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`additional_data`)),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`log_id`),\n  KEY `activity_logs_level_index` (`level`),\n  KEY `activity_logs_action_index` (`action`),\n  KEY `activity_logs_user_id_index` (`user_id`),\n  KEY `activity_logs_target_user_id_index` (`target_user_id`),\n  KEY `activity_logs_resource_type_index` (`resource_type`),\n  KEY `activity_logs_created_at_index` (`created_at`)\n) ENGINE=InnoDB AUTO_INCREMENT=2860 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `activity_logs` (\n  `log_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `level` varchar(50) NOT NULL,\n  `action` varchar(100) NOT NULL,\n  `message` text NOT NULL,\n  `user_id` bigint(20) unsigned DEFAULT NULL,\n  `target_user_id` bigint(20) unsigned DEFAULT NULL,\n  `resource_type` varchar(100) DEFAULT NULL,\n  `resource_id` bigint(20) unsigned DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `user_agent` text DEFAULT NULL,\n  `additional_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`additional_data`)),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`log_id`),\n  KEY `activity_logs_level_index` (`level`),\n  KEY `activity_logs_action_index` (`action`),\n  KEY `activity_logs_user_id_index` (`user_id`),\n  KEY `activity_logs_target_user_id_index` (`target_user_id`),\n  KEY `activity_logs_resource_type_index` (`resource_type`),\n  KEY `activity_logs_created_at_index` (`created_at`)\n) ENGINE=InnoDB AUTO_INCREMENT=2901 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "advanced_payments": {
         "columns": [
@@ -530,6 +530,122 @@
         "fks": [],
         "create_statement": "CREATE TABLE `agents` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `team_name` varchar(255) NOT NULL,\n  `created_by` varchar(255) NOT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
     },
+    "agent_achievement_claims": {
+        "columns": [
+            {
+                "Field": "id",
+                "Type": "bigint(20) unsigned",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "PRI",
+                "Default": null,
+                "Extra": "auto_increment",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "agent_id",
+                "Type": "bigint(20) unsigned",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "MUL",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "milestone",
+                "Type": "int(11)",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "amount",
+                "Type": "decimal(10,2)",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "",
+                "Default": "1500.00",
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "created_at",
+                "Type": "timestamp",
+                "Collation": null,
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "updated_at",
+                "Type": "timestamp",
+                "Collation": null,
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            }
+        ],
+        "indexes": [
+            {
+                "Table": "agent_achievement_claims",
+                "Non_unique": 0,
+                "Key_name": "PRIMARY",
+                "Seq_in_index": 1,
+                "Column_name": "id",
+                "Collation": "A",
+                "Cardinality": 0,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            },
+            {
+                "Table": "agent_achievement_claims",
+                "Non_unique": 1,
+                "Key_name": "agent_achievement_claims_agent_id_foreign",
+                "Seq_in_index": 1,
+                "Column_name": "agent_id",
+                "Collation": "A",
+                "Cardinality": 0,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            }
+        ],
+        "fks": [
+            {
+                "CONSTRAINT_NAME": "agent_achievement_claims_agent_id_foreign",
+                "COLUMN_NAME": "agent_id",
+                "ORDINAL_POSITION": 1,
+                "REFERENCED_TABLE_NAME": "users",
+                "REFERENCED_COLUMN_NAME": "id",
+                "UPDATE_RULE": "RESTRICT",
+                "DELETE_RULE": "CASCADE"
+            }
+        ],
+        "create_statement": "CREATE TABLE `agent_achievement_claims` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `agent_id` bigint(20) unsigned NOT NULL,\n  `milestone` int(11) NOT NULL,\n  `amount` decimal(10,2) NOT NULL DEFAULT 1500.00,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `agent_achievement_claims_agent_id_foreign` (`agent_id`),\n  CONSTRAINT `agent_achievement_claims_agent_id_foreign` FOREIGN KEY (`agent_id`) REFERENCES `users` (`id`) ON DELETE CASCADE\n) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+    },
     "agent_balance": {
         "columns": [
             {
@@ -663,6 +779,17 @@
                 "Extra": "",
                 "Privileges": "select,insert,update,references",
                 "Comment": ""
+            },
+            {
+                "Field": "achievement",
+                "Type": "decimal(10,2)",
+                "Collation": null,
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
             }
         ],
         "indexes": [
@@ -673,7 +800,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 1,
+                "Cardinality": 2,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -684,7 +811,222 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `agent_balance` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `agent_id` int(11) NOT NULL,\n  `balance` decimal(15,2) NOT NULL DEFAULT 0.00,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),\n  `commission` decimal(15,2) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `incentives` decimal(15,2) DEFAULT NULL,\n  `quota` decimal(10,2) DEFAULT NULL,\n  `incentives_value` decimal(10,2) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `bonus` decimal(15,2) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
+        "create_statement": "CREATE TABLE `agent_balance` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `agent_id` int(11) NOT NULL,\n  `balance` decimal(15,2) NOT NULL DEFAULT 0.00,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),\n  `commission` decimal(15,2) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `incentives` decimal(15,2) DEFAULT NULL,\n  `quota` decimal(10,2) DEFAULT NULL,\n  `incentives_value` decimal(10,2) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `bonus` decimal(15,2) DEFAULT NULL,\n  `achievement` decimal(10,2) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
+    },
+    "agent_bonus_history": {
+        "columns": [
+            {
+                "Field": "id",
+                "Type": "bigint(20) unsigned",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "PRI",
+                "Default": null,
+                "Extra": "auto_increment",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "agent_id",
+                "Type": "int(11)",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "MUL",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "ref_number",
+                "Type": "varchar(100)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "NO",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "total_amount",
+                "Type": "decimal(15,2)",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "",
+                "Default": "0.00",
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "type",
+                "Type": "varchar(50)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "MUL",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "proof_of_payment",
+                "Type": "varchar(255)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "remarks",
+                "Type": "text",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "created_by",
+                "Type": "varchar(255)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "updated_by",
+                "Type": "varchar(255)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "approve_by",
+                "Type": "varchar(255)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "organization_id",
+                "Type": "bigint(20)",
+                "Collation": null,
+                "Null": "YES",
+                "Key": "MUL",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "created_at",
+                "Type": "timestamp",
+                "Collation": null,
+                "Null": "YES",
+                "Key": "",
+                "Default": "current_timestamp()",
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "updated_at",
+                "Type": "timestamp",
+                "Collation": null,
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            }
+        ],
+        "indexes": [
+            {
+                "Table": "agent_bonus_history",
+                "Non_unique": 0,
+                "Key_name": "PRIMARY",
+                "Seq_in_index": 1,
+                "Column_name": "id",
+                "Collation": "A",
+                "Cardinality": 0,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            },
+            {
+                "Table": "agent_bonus_history",
+                "Non_unique": 1,
+                "Key_name": "idx_abh_agent_id",
+                "Seq_in_index": 1,
+                "Column_name": "agent_id",
+                "Collation": "A",
+                "Cardinality": 0,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            },
+            {
+                "Table": "agent_bonus_history",
+                "Non_unique": 1,
+                "Key_name": "idx_abh_organization_id",
+                "Seq_in_index": 1,
+                "Column_name": "organization_id",
+                "Collation": "A",
+                "Cardinality": 0,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "YES",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            },
+            {
+                "Table": "agent_bonus_history",
+                "Non_unique": 1,
+                "Key_name": "idx_abh_type",
+                "Seq_in_index": 1,
+                "Column_name": "type",
+                "Collation": "A",
+                "Cardinality": 0,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "YES",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            }
+        ],
+        "fks": [],
+        "create_statement": "CREATE TABLE `agent_bonus_history` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `agent_id` int(11) NOT NULL,\n  `ref_number` varchar(100) NOT NULL,\n  `total_amount` decimal(15,2) NOT NULL DEFAULT 0.00,\n  `type` varchar(50) DEFAULT NULL,\n  `proof_of_payment` varchar(255) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `approve_by` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(20) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_abh_agent_id` (`agent_id`),\n  KEY `idx_abh_organization_id` (`organization_id`),\n  KEY `idx_abh_type` (`type`)\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "agent_commission_history": {
         "columns": [
@@ -851,7 +1193,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 2,
+                "Cardinality": 6,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -862,7 +1204,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `agent_commission_history` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `ref_number` varchar(100) NOT NULL,\n  `total_amount` decimal(10,2) NOT NULL,\n  `created_by` varchar(255) NOT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `remarks` text DEFAULT NULL,\n  `proof_of_payment` varchar(255) DEFAULT NULL,\n  `agent_id` int(11) NOT NULL,\n  `updated_at` datetime DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `approve_by` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `commission_id_list` text DEFAULT NULL,\n  `type` varchar(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
+        "create_statement": "CREATE TABLE `agent_commission_history` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `ref_number` varchar(100) NOT NULL,\n  `total_amount` decimal(10,2) NOT NULL,\n  `created_by` varchar(255) NOT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `remarks` text DEFAULT NULL,\n  `proof_of_payment` varchar(255) DEFAULT NULL,\n  `agent_id` int(11) NOT NULL,\n  `updated_at` datetime DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `approve_by` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `commission_id_list` text DEFAULT NULL,\n  `type` varchar(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
     },
     "agent_incentive_history": {
         "columns": [
@@ -901,6 +1243,17 @@
             },
             {
                 "Field": "quota_reached",
+                "Type": "int(11)",
+                "Collation": null,
+                "Null": "NO",
+                "Key": "",
+                "Default": "0",
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
+            },
+            {
+                "Field": "batch_number",
                 "Type": "int(11)",
                 "Collation": null,
                 "Null": "NO",
@@ -974,7 +1327,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 0,
+                "Cardinality": 40,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -990,7 +1343,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "job_order_id",
                 "Collation": "A",
-                "Cardinality": 0,
+                "Cardinality": 40,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -1006,7 +1359,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "agent_id",
                 "Collation": "A",
-                "Cardinality": 0,
+                "Cardinality": 1,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -1022,7 +1375,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "agent_id",
                 "Collation": "A",
-                "Cardinality": 0,
+                "Cardinality": 1,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -1038,7 +1391,7 @@
                 "Seq_in_index": 2,
                 "Column_name": "job_order_id",
                 "Collation": "A",
-                "Cardinality": 0,
+                "Cardinality": 40,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -1054,7 +1407,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "organization_id",
                 "Collation": "A",
-                "Cardinality": 0,
+                "Cardinality": 1,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -1062,10 +1415,42 @@
                 "Comment": "",
                 "Index_comment": "",
                 "Ignored": "NO"
+            },
+            {
+                "Table": "agent_incentive_history",
+                "Non_unique": 1,
+                "Key_name": "idx_aih_agent_batch",
+                "Seq_in_index": 1,
+                "Column_name": "agent_id",
+                "Collation": "A",
+                "Cardinality": 1,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            },
+            {
+                "Table": "agent_incentive_history",
+                "Non_unique": 1,
+                "Key_name": "idx_aih_agent_batch",
+                "Seq_in_index": 2,
+                "Column_name": "batch_number",
+                "Collation": "A",
+                "Cardinality": 1,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `agent_incentive_history` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `agent_id` int(11) NOT NULL,\n  `job_order_id` bigint(20) unsigned NOT NULL,\n  `quota_reached` int(11) NOT NULL DEFAULT 0,\n  `incentive_value` decimal(15,2) NOT NULL DEFAULT 0.00,\n  `organization_id` bigint(20) DEFAULT NULL,\n  `processed_at` timestamp NULL DEFAULT current_timestamp(),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `uq_aih_job_order_id` (`job_order_id`),\n  KEY `idx_aih_agent_id` (`agent_id`),\n  KEY `idx_aih_agent_job` (`agent_id`,`job_order_id`),\n  KEY `idx_aih_organization_id` (`organization_id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `agent_incentive_history` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `agent_id` int(11) NOT NULL,\n  `job_order_id` bigint(20) unsigned NOT NULL,\n  `quota_reached` int(11) NOT NULL DEFAULT 0,\n  `batch_number` int(11) NOT NULL DEFAULT 0,\n  `incentive_value` decimal(15,2) NOT NULL DEFAULT 0.00,\n  `organization_id` bigint(20) DEFAULT NULL,\n  `processed_at` timestamp NULL DEFAULT current_timestamp(),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `uq_aih_job_order_id` (`job_order_id`),\n  KEY `idx_aih_agent_id` (`agent_id`),\n  KEY `idx_aih_agent_job` (`agent_id`,`job_order_id`),\n  KEY `idx_aih_organization_id` (`organization_id`),\n  KEY `idx_aih_agent_batch` (`agent_id`,`batch_number`)\n) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "applications": {
         "columns": [
@@ -1474,7 +1859,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 16,
+                "Cardinality": 43,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -1506,7 +1891,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "created_by_user_id",
                 "Collation": "A",
-                "Cardinality": 2,
+                "Cardinality": 3,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -1517,7 +1902,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `applications` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `timestamp` datetime DEFAULT NULL,\n  `email_address` varchar(255) DEFAULT NULL,\n  `first_name` varchar(255) DEFAULT NULL,\n  `middle_initial` char(255) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `mobile_number` varchar(50) DEFAULT NULL,\n  `secondary_mobile_number` varchar(50) DEFAULT NULL,\n  `installation_address` text DEFAULT NULL,\n  `landmark` text DEFAULT NULL,\n  `region` varchar(255) DEFAULT NULL,\n  `city` varchar(255) DEFAULT NULL,\n  `barangay` varchar(255) DEFAULT NULL,\n  `location` varchar(255) DEFAULT NULL,\n  `desired_plan` varchar(255) DEFAULT NULL,\n  `promo` varchar(255) DEFAULT NULL,\n  `referrer_account_id` bigint(20) unsigned DEFAULT NULL,\n  `referred_by` varchar(255) DEFAULT NULL,\n  `proof_of_billing_url` varchar(255) DEFAULT NULL,\n  `government_valid_id_url` varchar(255) DEFAULT NULL,\n  `second_government_valid_id_url` varchar(255) DEFAULT NULL,\n  `house_front_picture_url` varchar(255) DEFAULT NULL,\n  `document_attachment_url` varchar(255) DEFAULT NULL,\n  `other_isp_bill_url` varchar(255) DEFAULT NULL,\n  `terms_agreed` varchar(255) NOT NULL DEFAULT '0',\n  `status` varchar(100) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `promo_url` varchar(255) DEFAULT NULL,\n  `nearest_landmark1_url` varchar(255) DEFAULT NULL,\n  `nearest_landmark2_url` varchar(255) DEFAULT NULL,\n  `long_lat` varchar(255) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `applications_referrer_account_id_foreign` (`referrer_account_id`),\n  KEY `applications_created_by_user_id_foreign` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `applications` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `timestamp` datetime DEFAULT NULL,\n  `email_address` varchar(255) DEFAULT NULL,\n  `first_name` varchar(255) DEFAULT NULL,\n  `middle_initial` char(255) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `mobile_number` varchar(50) DEFAULT NULL,\n  `secondary_mobile_number` varchar(50) DEFAULT NULL,\n  `installation_address` text DEFAULT NULL,\n  `landmark` text DEFAULT NULL,\n  `region` varchar(255) DEFAULT NULL,\n  `city` varchar(255) DEFAULT NULL,\n  `barangay` varchar(255) DEFAULT NULL,\n  `location` varchar(255) DEFAULT NULL,\n  `desired_plan` varchar(255) DEFAULT NULL,\n  `promo` varchar(255) DEFAULT NULL,\n  `referrer_account_id` bigint(20) unsigned DEFAULT NULL,\n  `referred_by` varchar(255) DEFAULT NULL,\n  `proof_of_billing_url` varchar(255) DEFAULT NULL,\n  `government_valid_id_url` varchar(255) DEFAULT NULL,\n  `second_government_valid_id_url` varchar(255) DEFAULT NULL,\n  `house_front_picture_url` varchar(255) DEFAULT NULL,\n  `document_attachment_url` varchar(255) DEFAULT NULL,\n  `other_isp_bill_url` varchar(255) DEFAULT NULL,\n  `terms_agreed` varchar(255) NOT NULL DEFAULT '0',\n  `status` varchar(100) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `promo_url` varchar(255) DEFAULT NULL,\n  `nearest_landmark1_url` varchar(255) DEFAULT NULL,\n  `nearest_landmark2_url` varchar(255) DEFAULT NULL,\n  `long_lat` varchar(255) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `applications_referrer_account_id_foreign` (`referrer_account_id`),\n  KEY `applications_created_by_user_id_foreign` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=9425 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "application_visits": {
         "columns": [
@@ -2295,7 +2680,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 1455,
+                "Cardinality": 1453,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -2306,7 +2691,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `audit_trail_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `old_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`old_details`)),\n  `new_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`new_details`)),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=1550 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `audit_trail_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `old_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`old_details`)),\n  `new_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`new_details`)),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=1593 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "barangay": {
         "columns": [
@@ -2601,7 +2986,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 20,
+                "Cardinality": 21,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -2617,7 +3002,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_no",
                 "Collation": "A",
-                "Cardinality": 20,
+                "Cardinality": 21,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -2633,7 +3018,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "customer_id",
                 "Collation": "A",
-                "Cardinality": 20,
+                "Cardinality": 21,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -2649,7 +3034,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "plan_id",
                 "Collation": "A",
-                "Cardinality": 1,
+                "Cardinality": 2,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -2676,7 +3061,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `billing_accounts` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `customer_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(255) NOT NULL,\n  `date_installed` date DEFAULT NULL,\n  `plan_id` bigint(20) unsigned DEFAULT NULL,\n  `account_balance` decimal(12,2) NOT NULL DEFAULT 0.00,\n  `balance_update_date` datetime DEFAULT NULL,\n  `billing_day` int(11) DEFAULT NULL,\n  `billing_status_id` bigint(20) unsigned DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `vip_expiration` datetime DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `vip_remarks` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `billing_accounts_account_no_unique` (`account_no`),\n  KEY `billing_accounts_customer_id_foreign` (`customer_id`),\n  KEY `billing_accounts_plan_id_foreign` (`plan_id`),\n  KEY `billing_accounts_billing_status_id_foreign` (`billing_status_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `billing_accounts` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `customer_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(255) NOT NULL,\n  `date_installed` date DEFAULT NULL,\n  `plan_id` bigint(20) unsigned DEFAULT NULL,\n  `account_balance` decimal(12,2) NOT NULL DEFAULT 0.00,\n  `balance_update_date` datetime DEFAULT NULL,\n  `billing_day` int(11) DEFAULT NULL,\n  `billing_status_id` bigint(20) unsigned DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `vip_expiration` datetime DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `vip_remarks` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `billing_accounts_account_no_unique` (`account_no`),\n  KEY `billing_accounts_customer_id_foreign` (`customer_id`),\n  KEY `billing_accounts_plan_id_foreign` (`plan_id`),\n  KEY `billing_accounts_billing_status_id_foreign` (`billing_status_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "billing_config": {
         "columns": [
@@ -3944,7 +4329,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 20,
+                "Cardinality": 21,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -3955,7 +4340,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `customers` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `first_name` varchar(255) DEFAULT NULL,\n  `middle_initial` char(6) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `email_address` varchar(255) DEFAULT NULL,\n  `contact_number_primary` varchar(50) DEFAULT NULL,\n  `contact_number_secondary` varchar(50) DEFAULT NULL,\n  `address` text DEFAULT NULL,\n  `location` varchar(255) DEFAULT NULL,\n  `barangay` varchar(255) DEFAULT NULL,\n  `city` varchar(255) DEFAULT NULL,\n  `region` varchar(255) DEFAULT NULL,\n  `address_coordinates` varchar(255) DEFAULT NULL,\n  `housing_status` varchar(100) DEFAULT NULL,\n  `referred_by` varchar(255) DEFAULT NULL,\n  `group_name` varchar(255) DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `desired_plan` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `house_front_picture_url` varchar(255) DEFAULT NULL,\n  `account_no` varchar(255) DEFAULT NULL,\n  `proof_of_billing_url` varchar(255) DEFAULT NULL,\n  `government_valid_id_url` varchar(255) DEFAULT NULL,\n  `second_government_valid_id_url` varchar(255) DEFAULT NULL,\n  `document_attachment_url` varchar(255) DEFAULT NULL,\n  `other_isp_bill_url` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `customers` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `first_name` varchar(255) DEFAULT NULL,\n  `middle_initial` char(6) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `email_address` varchar(255) DEFAULT NULL,\n  `contact_number_primary` varchar(50) DEFAULT NULL,\n  `contact_number_secondary` varchar(50) DEFAULT NULL,\n  `address` text DEFAULT NULL,\n  `location` varchar(255) DEFAULT NULL,\n  `barangay` varchar(255) DEFAULT NULL,\n  `city` varchar(255) DEFAULT NULL,\n  `region` varchar(255) DEFAULT NULL,\n  `address_coordinates` varchar(255) DEFAULT NULL,\n  `housing_status` varchar(100) DEFAULT NULL,\n  `referred_by` varchar(255) DEFAULT NULL,\n  `group_name` varchar(255) DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `desired_plan` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `house_front_picture_url` varchar(255) DEFAULT NULL,\n  `account_no` varchar(255) DEFAULT NULL,\n  `proof_of_billing_url` varchar(255) DEFAULT NULL,\n  `government_valid_id_url` varchar(255) DEFAULT NULL,\n  `second_government_valid_id_url` varchar(255) DEFAULT NULL,\n  `document_attachment_url` varchar(255) DEFAULT NULL,\n  `other_isp_bill_url` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "custom_account_number": {
         "columns": [
@@ -4713,7 +5098,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 558,
+                "Cardinality": 551,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -4729,7 +5114,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_id",
                 "Collation": "A",
-                "Cardinality": 279,
+                "Cardinality": 275,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -4745,7 +5130,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "created_by_user_id",
                 "Collation": "A",
-                "Cardinality": 24,
+                "Cardinality": 25,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -4756,7 +5141,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `details_update_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `old_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`old_details`)),\n  `new_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`new_details`)),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `details_update_logs_account_id_foreign` (`account_id`),\n  KEY `details_update_logs_created_by_user_id_foreign` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=560 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `details_update_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `old_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`old_details`)),\n  `new_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`new_details`)),\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `details_update_logs_account_id_foreign` (`account_id`),\n  KEY `details_update_logs_created_by_user_id_foreign` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=594 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "disconnected_logs": {
         "columns": [
@@ -4879,7 +5264,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 17523,
+                "Cardinality": 17519,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -4895,7 +5280,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_id",
                 "Collation": "A",
-                "Cardinality": 5841,
+                "Cardinality": 5839,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -5537,7 +5922,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 9917,
+                "Cardinality": 9912,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -5548,7 +5933,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `email_queue` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_no` varchar(50) NOT NULL,\n  `recipient_email` varchar(150) NOT NULL,\n  `cc` text DEFAULT NULL,\n  `bcc` text DEFAULT NULL,\n  `subject` varchar(200) DEFAULT NULL,\n  `body_html` longtext DEFAULT NULL,\n  `attachment_path` varchar(255) DEFAULT NULL,\n  `status` enum('pending','sent','failed') NOT NULL DEFAULT 'pending',\n  `sent_at` datetime DEFAULT NULL,\n  `attempts` int(11) NOT NULL DEFAULT 0,\n  `error_message` text DEFAULT NULL,\n  `email_sender` varchar(150) DEFAULT NULL,\n  `reply_to` varchar(150) DEFAULT NULL,\n  `sender_name` varchar(150) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),\n  `time_sent` datetime DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=9550 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci"
+        "create_statement": "CREATE TABLE `email_queue` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_no` varchar(50) NOT NULL,\n  `recipient_email` varchar(150) NOT NULL,\n  `cc` text DEFAULT NULL,\n  `bcc` text DEFAULT NULL,\n  `subject` varchar(200) DEFAULT NULL,\n  `body_html` longtext DEFAULT NULL,\n  `attachment_path` varchar(255) DEFAULT NULL,\n  `status` enum('pending','sent','failed') NOT NULL DEFAULT 'pending',\n  `sent_at` datetime DEFAULT NULL,\n  `attempts` int(11) NOT NULL DEFAULT 0,\n  `error_message` text DEFAULT NULL,\n  `email_sender` varchar(150) DEFAULT NULL,\n  `reply_to` varchar(150) DEFAULT NULL,\n  `sender_name` varchar(150) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),\n  `time_sent` datetime DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=9572 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci"
     },
     "email_templates": {
         "columns": [
@@ -8365,7 +8750,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 40,
+                "Cardinality": 51,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -8397,7 +8782,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_no",
                 "Collation": "A",
-                "Cardinality": 20,
+                "Cardinality": 25,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -8408,7 +8793,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `invoices` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(255) NOT NULL,\n  `invoice_date` datetime DEFAULT NULL,\n  `invoice_balance` decimal(10,2) DEFAULT NULL,\n  `others_and_basic_charges` decimal(10,2) DEFAULT NULL,\n  `total_amount` decimal(10,2) DEFAULT NULL,\n  `received_payment` decimal(10,2) DEFAULT NULL,\n  `due_date` datetime DEFAULT NULL,\n  `status` varchar(100) DEFAULT NULL,\n  `payment_portal_log_ref` varchar(255) DEFAULT NULL,\n  `transaction_id` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `service_charge` decimal(10,2) DEFAULT NULL,\n  `rebate` decimal(10,2) DEFAULT NULL,\n  `discounts` decimal(10,2) DEFAULT NULL,\n  `staggered` decimal(10,2) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `pro_rate` decimal(10,2) DEFAULT NULL,\n  `pro_rate_start` date DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `invoices_transaction_id_foreign` (`transaction_id`),\n  KEY `invoices_account_no_fk` (`account_no`)\n) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `invoices` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(255) NOT NULL,\n  `invoice_date` datetime DEFAULT NULL,\n  `invoice_balance` decimal(10,2) DEFAULT NULL,\n  `others_and_basic_charges` decimal(10,2) DEFAULT NULL,\n  `total_amount` decimal(10,2) DEFAULT NULL,\n  `received_payment` decimal(10,2) DEFAULT NULL,\n  `due_date` datetime DEFAULT NULL,\n  `status` varchar(100) DEFAULT NULL,\n  `payment_portal_log_ref` varchar(255) DEFAULT NULL,\n  `transaction_id` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `service_charge` decimal(10,2) DEFAULT NULL,\n  `rebate` decimal(10,2) DEFAULT NULL,\n  `discounts` decimal(10,2) DEFAULT NULL,\n  `staggered` decimal(10,2) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `pro_rate` decimal(10,2) DEFAULT NULL,\n  `pro_rate_start` date DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `invoices_transaction_id_foreign` (`transaction_id`),\n  KEY `invoices_account_no_fk` (`account_no`)\n) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "item_supplier_list": {
         "columns": [
@@ -9104,7 +9489,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 25,
+                "Cardinality": 38,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -9120,7 +9505,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_id",
                 "Collation": "A",
-                "Cardinality": 2,
+                "Cardinality": 3,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -9136,7 +9521,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "application_id",
                 "Collation": "A",
-                "Cardinality": 25,
+                "Cardinality": 38,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -9147,7 +9532,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `job_orders` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `application_id` bigint(20) unsigned DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `timestamp` datetime DEFAULT NULL,\n  `date_installed` date DEFAULT NULL,\n  `installation_fee` decimal(10,2) DEFAULT NULL,\n  `billing_day` int(11) DEFAULT NULL,\n  `billing_status` varchar(255) DEFAULT NULL,\n  `status` varchar(100) DEFAULT NULL,\n  `modem_router_sn` varchar(255) DEFAULT NULL,\n  `router_model` varchar(255) DEFAULT NULL,\n  `group_name` varchar(255) DEFAULT NULL,\n  `lcpnap` varchar(255) DEFAULT NULL,\n  `port` varchar(255) DEFAULT NULL,\n  `vlan` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `connection_type` varchar(100) DEFAULT NULL,\n  `usage_type` varchar(255) DEFAULT NULL,\n  `username_status` varchar(100) DEFAULT NULL,\n  `visit_by` varchar(255) DEFAULT NULL,\n  `visit_with` varchar(255) DEFAULT NULL,\n  `visit_with_other` varchar(255) DEFAULT NULL,\n  `onsite_status` varchar(100) DEFAULT NULL,\n  `onsite_remarks` text DEFAULT NULL,\n  `status_remarks` varchar(255) DEFAULT NULL,\n  `address_coordinates` varchar(255) DEFAULT NULL,\n  `contract_link` varchar(255) DEFAULT NULL,\n  `client_signature_url` varchar(255) DEFAULT NULL,\n  `setup_image_url` varchar(255) DEFAULT NULL,\n  `speedtest_image_url` varchar(255) DEFAULT NULL,\n  `signed_contract_image_url` varchar(255) DEFAULT NULL,\n  `box_reading_image_url` varchar(255) DEFAULT NULL,\n  `router_reading_image_url` varchar(255) DEFAULT NULL,\n  `port_label_image_url` varchar(255) DEFAULT NULL,\n  `house_front_picture_url` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_email` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user_email` varchar(255) DEFAULT NULL,\n  `assigned_email` varchar(255) DEFAULT NULL,\n  `pppoe_username` varchar(255) DEFAULT NULL,\n  `pppoe_password` varchar(255) DEFAULT NULL,\n  `installation_landmark` varchar(255) DEFAULT NULL,\n  `start_time` datetime DEFAULT NULL,\n  `end_time` datetime DEFAULT NULL,\n  `proof_image_url` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `technicians` text DEFAULT NULL,\n  `client_tagging_url` varchar(255) DEFAULT NULL,\n  `commission_status` varchar(100) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `job_orders_account_id_foreign` (`account_id`),\n  KEY `job_orders_application_id_foreign` (`application_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `job_orders` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `application_id` bigint(20) unsigned DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `timestamp` datetime DEFAULT NULL,\n  `date_installed` date DEFAULT NULL,\n  `installation_fee` decimal(10,2) DEFAULT NULL,\n  `billing_day` int(11) DEFAULT NULL,\n  `billing_status` varchar(255) DEFAULT NULL,\n  `status` varchar(100) DEFAULT NULL,\n  `modem_router_sn` varchar(255) DEFAULT NULL,\n  `router_model` varchar(255) DEFAULT NULL,\n  `group_name` varchar(255) DEFAULT NULL,\n  `lcpnap` varchar(255) DEFAULT NULL,\n  `port` varchar(255) DEFAULT NULL,\n  `vlan` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `connection_type` varchar(100) DEFAULT NULL,\n  `usage_type` varchar(255) DEFAULT NULL,\n  `username_status` varchar(100) DEFAULT NULL,\n  `visit_by` varchar(255) DEFAULT NULL,\n  `visit_with` varchar(255) DEFAULT NULL,\n  `visit_with_other` varchar(255) DEFAULT NULL,\n  `onsite_status` varchar(100) DEFAULT NULL,\n  `onsite_remarks` text DEFAULT NULL,\n  `status_remarks` varchar(255) DEFAULT NULL,\n  `address_coordinates` varchar(255) DEFAULT NULL,\n  `contract_link` varchar(255) DEFAULT NULL,\n  `client_signature_url` varchar(255) DEFAULT NULL,\n  `setup_image_url` varchar(255) DEFAULT NULL,\n  `speedtest_image_url` varchar(255) DEFAULT NULL,\n  `signed_contract_image_url` varchar(255) DEFAULT NULL,\n  `box_reading_image_url` varchar(255) DEFAULT NULL,\n  `router_reading_image_url` varchar(255) DEFAULT NULL,\n  `port_label_image_url` varchar(255) DEFAULT NULL,\n  `house_front_picture_url` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_email` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user_email` varchar(255) DEFAULT NULL,\n  `assigned_email` varchar(255) DEFAULT NULL,\n  `pppoe_username` varchar(255) DEFAULT NULL,\n  `pppoe_password` varchar(255) DEFAULT NULL,\n  `installation_landmark` varchar(255) DEFAULT NULL,\n  `start_time` datetime DEFAULT NULL,\n  `end_time` datetime DEFAULT NULL,\n  `proof_image_url` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `technicians` text DEFAULT NULL,\n  `client_tagging_url` varchar(255) DEFAULT NULL,\n  `commission_status` varchar(100) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `job_orders_account_id_foreign` (`account_id`),\n  KEY `job_orders_application_id_foreign` (`application_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "job_order_images_queue": {
         "columns": [
@@ -10522,7 +10907,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 21,
+                "Cardinality": 22,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -10538,7 +10923,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_id",
                 "Collation": "A",
-                "Cardinality": 21,
+                "Cardinality": 22,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -10554,7 +10939,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "username",
                 "Collation": "A",
-                "Cardinality": 21,
+                "Cardinality": 22,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -10581,7 +10966,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `online_status` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `session_status` varchar(100) DEFAULT NULL,\n  `session_group` varchar(100) DEFAULT NULL,\n  `session_id` varchar(255) DEFAULT NULL,\n  `active_sessions` int(50) DEFAULT NULL,\n  `total_download` bigint(20) DEFAULT NULL,\n  `total_upload` bigint(20) DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `city` varchar(255) DEFAULT NULL,\n  `session_mac_address` varchar(17) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `online_status_account_id_unique` (`account_id`),\n  UNIQUE KEY `online_status_username_unique` (`username`),\n  UNIQUE KEY `online_status_session_mac_address_unique` (`session_mac_address`)\n) ENGINE=InnoDB AUTO_INCREMENT=14553 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `online_status` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `session_status` varchar(100) DEFAULT NULL,\n  `session_group` varchar(100) DEFAULT NULL,\n  `session_id` varchar(255) DEFAULT NULL,\n  `active_sessions` int(50) DEFAULT NULL,\n  `total_download` bigint(20) DEFAULT NULL,\n  `total_upload` bigint(20) DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `city` varchar(255) DEFAULT NULL,\n  `session_mac_address` varchar(17) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `online_status_account_id_unique` (`account_id`),\n  UNIQUE KEY `online_status_username_unique` (`username`),\n  UNIQUE KEY `online_status_session_mac_address_unique` (`session_mac_address`)\n) ENGINE=InnoDB AUTO_INCREMENT=17998 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "organizations": {
         "columns": [
@@ -12504,9 +12889,9 @@
                 "Type": "bigint(20) unsigned",
                 "Collation": null,
                 "Null": "NO",
-                "Key": "",
+                "Key": "PRI",
                 "Default": null,
-                "Extra": "",
+                "Extra": "auto_increment",
                 "Privileges": "select,insert,update,references",
                 "Comment": ""
             },
@@ -12676,9 +13061,26 @@
                 "Comment": ""
             }
         ],
-        "indexes": [],
+        "indexes": [
+            {
+                "Table": "radius_operation_queue",
+                "Non_unique": 0,
+                "Key_name": "PRIMARY",
+                "Seq_in_index": 1,
+                "Column_name": "id",
+                "Collation": "A",
+                "Cardinality": 7,
+                "Sub_part": null,
+                "Packed": null,
+                "Null": "",
+                "Index_type": "BTREE",
+                "Comment": "",
+                "Index_comment": "",
+                "Ignored": "NO"
+            }
+        ],
         "fks": [],
-        "create_statement": "CREATE TABLE `radius_operation_queue` (\n  `id` bigint(20) unsigned NOT NULL,\n  `organization_id` int(10) unsigned DEFAULT NULL,\n  `source_type` varchar(50) NOT NULL COMMENT 'job_order or service_order',\n  `source_id` int(10) unsigned NOT NULL COMMENT 'job_order.id or service_order.id',\n  `account_no` varchar(50) DEFAULT NULL,\n  `operation` varchar(50) NOT NULL COMMENT 'create_user, reconnect_user, restricted_user, disconnect_user, update_credentials',\n  `params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'Full parameters needed to retry the RADIUS call' CHECK (json_valid(`params`)),\n  `status` varchar(20) NOT NULL DEFAULT 'pending' COMMENT 'pending, processing, success, failed',\n  `attempts` int(10) unsigned NOT NULL DEFAULT 0,\n  `max_attempts` int(10) unsigned NOT NULL DEFAULT 5,\n  `last_error` text DEFAULT NULL,\n  `next_retry_at` datetime DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `completed_at` datetime DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `radius_operation_queue` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` int(10) unsigned DEFAULT NULL,\n  `source_type` varchar(50) NOT NULL COMMENT 'job_order or service_order',\n  `source_id` int(10) unsigned NOT NULL COMMENT 'job_order.id or service_order.id',\n  `account_no` varchar(50) DEFAULT NULL,\n  `operation` varchar(50) NOT NULL COMMENT 'create_user, reconnect_user, restricted_user, disconnect_user, update_credentials',\n  `params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'Full parameters needed to retry the RADIUS call' CHECK (json_valid(`params`)),\n  `status` varchar(20) NOT NULL DEFAULT 'pending' COMMENT 'pending, processing, success, failed',\n  `attempts` int(10) unsigned NOT NULL DEFAULT 0,\n  `max_attempts` int(10) unsigned NOT NULL DEFAULT 5,\n  `last_error` text DEFAULT NULL,\n  `next_retry_at` datetime DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `completed_at` datetime DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT current_timestamp(),\n  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "rebates": {
         "columns": [
@@ -13107,7 +13509,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 25617,
+                "Cardinality": 25615,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -13123,7 +13525,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_id",
                 "Collation": "A",
-                "Cardinality": 8539,
+                "Cardinality": 8538,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -13150,7 +13552,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `reconnection_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `session_id` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `plan_id` bigint(20) unsigned DEFAULT NULL,\n  `reconnection_fee` decimal(10,2) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `billing_status` varchar(255) DEFAULT NULL,\n  `pro_rate_applied` tinyint(1) DEFAULT NULL,\n  `pro_rate_invoice_id` varchar(255) DEFAULT NULL,\n  `pro_rate_billed_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `reconnection_logs_account_id_foreign` (`account_id`),\n  KEY `reconnection_logs_plan_id_foreign` (`plan_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=25764 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `reconnection_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `session_id` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `plan_id` bigint(20) unsigned DEFAULT NULL,\n  `reconnection_fee` decimal(10,2) DEFAULT NULL,\n  `remarks` text DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `billing_status` varchar(255) DEFAULT NULL,\n  `pro_rate_applied` tinyint(1) DEFAULT NULL,\n  `pro_rate_invoice_id` varchar(255) DEFAULT NULL,\n  `pro_rate_billed_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `reconnection_logs_account_id_foreign` (`account_id`),\n  KEY `reconnection_logs_plan_id_foreign` (`plan_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=25824 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "region": {
         "columns": [
@@ -14812,7 +15214,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 32,
+                "Cardinality": 41,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -14828,7 +15230,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_no",
                 "Collation": "A",
-                "Cardinality": 32,
+                "Cardinality": 20,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -14839,7 +15241,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `service_orders` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(255) DEFAULT NULL,\n  `invoice_id` varchar(255) DEFAULT NULL,\n  `status` varchar(255) DEFAULT NULL,\n  `ticket_id` varchar(255) DEFAULT NULL,\n  `timestamp` datetime DEFAULT NULL,\n  `support_status` varchar(100) DEFAULT NULL,\n  `concern` varchar(255) DEFAULT NULL,\n  `concern_remarks` text DEFAULT NULL,\n  `priority_level` varchar(50) DEFAULT NULL,\n  `requested_by` varchar(255) DEFAULT NULL,\n  `assigned_email` varchar(255) DEFAULT NULL,\n  `visit_status` varchar(100) DEFAULT NULL,\n  `visit_by_user` varchar(255) DEFAULT NULL,\n  `visit_with` varchar(255) DEFAULT NULL,\n  `visit_with_other` varchar(255) DEFAULT NULL,\n  `visit_remarks` text DEFAULT NULL,\n  `repair_category` varchar(255) DEFAULT NULL,\n  `support_remarks` text DEFAULT NULL,\n  `service_charge` decimal(10,2) DEFAULT NULL,\n  `client_signature_url` varchar(255) DEFAULT NULL,\n  `image1_url` varchar(255) DEFAULT NULL,\n  `image2_url` varchar(255) DEFAULT NULL,\n  `image3_url` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `old_lcp` varchar(255) DEFAULT NULL,\n  `old_nap` varchar(255) DEFAULT NULL,\n  `old_port` varchar(255) DEFAULT NULL,\n  `old_router_modem_sn` varchar(255) DEFAULT NULL,\n  `old_vlan` varchar(255) DEFAULT NULL,\n  `new_router_modem_sn` varchar(255) DEFAULT NULL,\n  `new_lcp` varchar(255) DEFAULT NULL,\n  `new_nap` varchar(255) DEFAULT NULL,\n  `new_port` varchar(255) DEFAULT NULL,\n  `new_vlan` varchar(255) DEFAULT NULL,\n  `router_model` varchar(255) DEFAULT NULL,\n  `new_lcpnap` varchar(255) DEFAULT NULL,\n  `old_lcpnap` varchar(255) DEFAULT NULL,\n  `old_plan` varchar(255) DEFAULT NULL,\n  `new_plan` varchar(255) DEFAULT NULL,\n  `referred_by` varchar(255) DEFAULT NULL,\n  `start_time` datetime DEFAULT NULL,\n  `end_time` datetime DEFAULT NULL,\n  `proof_image_url` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `date_installed` datetime DEFAULT NULL,\n  `technicians` text DEFAULT NULL,\n  `speedtest_image_url` varchar(255) DEFAULT NULL,\n  `setup_image_url` varchar(255) DEFAULT NULL,\n  `box_reading_image_url` varchar(255) DEFAULT NULL,\n  `router_reading_image_url` varchar(255) DEFAULT NULL,\n  `image4` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `service_orders_account_id_foreign` (`account_no`)\n) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `service_orders` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(255) DEFAULT NULL,\n  `invoice_id` varchar(255) DEFAULT NULL,\n  `status` varchar(255) DEFAULT NULL,\n  `ticket_id` varchar(255) DEFAULT NULL,\n  `timestamp` datetime DEFAULT NULL,\n  `support_status` varchar(100) DEFAULT NULL,\n  `concern` varchar(255) DEFAULT NULL,\n  `concern_remarks` text DEFAULT NULL,\n  `priority_level` varchar(50) DEFAULT NULL,\n  `requested_by` varchar(255) DEFAULT NULL,\n  `assigned_email` varchar(255) DEFAULT NULL,\n  `visit_status` varchar(100) DEFAULT NULL,\n  `visit_by_user` varchar(255) DEFAULT NULL,\n  `visit_with` varchar(255) DEFAULT NULL,\n  `visit_with_other` varchar(255) DEFAULT NULL,\n  `visit_remarks` text DEFAULT NULL,\n  `repair_category` varchar(255) DEFAULT NULL,\n  `support_remarks` text DEFAULT NULL,\n  `service_charge` decimal(10,2) DEFAULT NULL,\n  `client_signature_url` varchar(255) DEFAULT NULL,\n  `image1_url` varchar(255) DEFAULT NULL,\n  `image2_url` varchar(255) DEFAULT NULL,\n  `image3_url` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user` varchar(255) DEFAULT NULL,\n  `old_lcp` varchar(255) DEFAULT NULL,\n  `old_nap` varchar(255) DEFAULT NULL,\n  `old_port` varchar(255) DEFAULT NULL,\n  `old_router_modem_sn` varchar(255) DEFAULT NULL,\n  `old_vlan` varchar(255) DEFAULT NULL,\n  `new_router_modem_sn` varchar(255) DEFAULT NULL,\n  `new_lcp` varchar(255) DEFAULT NULL,\n  `new_nap` varchar(255) DEFAULT NULL,\n  `new_port` varchar(255) DEFAULT NULL,\n  `new_vlan` varchar(255) DEFAULT NULL,\n  `router_model` varchar(255) DEFAULT NULL,\n  `new_lcpnap` varchar(255) DEFAULT NULL,\n  `old_lcpnap` varchar(255) DEFAULT NULL,\n  `old_plan` varchar(255) DEFAULT NULL,\n  `new_plan` varchar(255) DEFAULT NULL,\n  `referred_by` varchar(255) DEFAULT NULL,\n  `start_time` datetime DEFAULT NULL,\n  `end_time` datetime DEFAULT NULL,\n  `proof_image_url` varchar(255) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `date_installed` datetime DEFAULT NULL,\n  `technicians` text DEFAULT NULL,\n  `speedtest_image_url` varchar(255) DEFAULT NULL,\n  `setup_image_url` varchar(255) DEFAULT NULL,\n  `box_reading_image_url` varchar(255) DEFAULT NULL,\n  `router_reading_image_url` varchar(255) DEFAULT NULL,\n  `image4` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `service_orders_account_id_foreign` (`account_no`)\n) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "service_order_items": {
         "columns": [
@@ -15996,7 +16398,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 2,
+                "Cardinality": 6,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -16012,7 +16414,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "contact_no",
                 "Collation": "A",
-                "Cardinality": 1,
+                "Cardinality": 6,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -16076,7 +16478,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "sent_at",
                 "Collation": "A",
-                "Cardinality": 2,
+                "Cardinality": 6,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -16119,7 +16521,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `sms_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(50) DEFAULT NULL,\n  `contact_no` varchar(50) NOT NULL,\n  `message` text NOT NULL,\n  `message_length` int(11) DEFAULT NULL,\n  `provider` varchar(50) DEFAULT 'itexmo',\n  `sender_id` varchar(50) DEFAULT NULL,\n  `status` enum('sent','failed') NOT NULL DEFAULT 'sent',\n  `attempts` int(11) NOT NULL DEFAULT 1,\n  `error_message` text DEFAULT NULL,\n  `provider_response` text DEFAULT NULL,\n  `source` varchar(50) DEFAULT NULL,\n  `reference_id` bigint(20) unsigned DEFAULT NULL,\n  `sent_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_sms_logs_contact_no` (`contact_no`),\n  KEY `idx_sms_logs_account_no` (`account_no`),\n  KEY `idx_sms_logs_status` (`status`),\n  KEY `idx_sms_logs_provider` (`provider`),\n  KEY `idx_sms_logs_sent_at` (`sent_at`),\n  KEY `idx_sms_logs_organization_id` (`organization_id`),\n  KEY `idx_sms_logs_created_by_user_id` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `sms_logs` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(50) DEFAULT NULL,\n  `contact_no` varchar(50) NOT NULL,\n  `message` text NOT NULL,\n  `message_length` int(11) DEFAULT NULL,\n  `provider` varchar(50) DEFAULT 'itexmo',\n  `sender_id` varchar(50) DEFAULT NULL,\n  `status` enum('sent','failed') NOT NULL DEFAULT 'sent',\n  `attempts` int(11) NOT NULL DEFAULT 1,\n  `error_message` text DEFAULT NULL,\n  `provider_response` text DEFAULT NULL,\n  `source` varchar(50) DEFAULT NULL,\n  `reference_id` bigint(20) unsigned DEFAULT NULL,\n  `sent_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_sms_logs_contact_no` (`contact_no`),\n  KEY `idx_sms_logs_account_no` (`account_no`),\n  KEY `idx_sms_logs_status` (`status`),\n  KEY `idx_sms_logs_provider` (`provider`),\n  KEY `idx_sms_logs_sent_at` (`sent_at`),\n  KEY `idx_sms_logs_organization_id` (`organization_id`),\n  KEY `idx_sms_logs_created_by_user_id` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "sms_queue": {
         "columns": [
@@ -16312,7 +16714,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `sms_queue` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(50) DEFAULT NULL,\n  `contact_no` varchar(50) NOT NULL,\n  `message` text NOT NULL,\n  `status` enum('pending','sent','failed') NOT NULL DEFAULT 'pending',\n  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),\n  `sent_at` timestamp NULL DEFAULT NULL,\n  `time_sent` timestamp NULL DEFAULT NULL,\n  `attempts` int(11) NOT NULL DEFAULT 0,\n  `error_message` text DEFAULT NULL,\n  `updated_at` datetime DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_sms_queue_status` (`status`),\n  KEY `idx_sms_queue_account_no` (`account_no`),\n  KEY `idx_sms_queue_time_sent` (`time_sent`)\n) ENGINE=InnoDB AUTO_INCREMENT=3768 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `sms_queue` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(50) DEFAULT NULL,\n  `contact_no` varchar(50) NOT NULL,\n  `message` text NOT NULL,\n  `status` enum('pending','sent','failed') NOT NULL DEFAULT 'pending',\n  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),\n  `sent_at` timestamp NULL DEFAULT NULL,\n  `time_sent` timestamp NULL DEFAULT NULL,\n  `attempts` int(11) NOT NULL DEFAULT 0,\n  `error_message` text DEFAULT NULL,\n  `updated_at` datetime DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_sms_queue_status` (`status`),\n  KEY `idx_sms_queue_account_no` (`account_no`),\n  KEY `idx_sms_queue_time_sent` (`time_sent`)\n) ENGINE=InnoDB AUTO_INCREMENT=3782 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "sms_templates": {
         "columns": [
@@ -17060,7 +17462,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 40,
+                "Cardinality": 52,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -17076,7 +17478,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "account_no",
                 "Collation": "A",
-                "Cardinality": 20,
+                "Cardinality": 26,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -17087,7 +17489,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `statement_of_accounts` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(255) NOT NULL,\n  `statement_date` datetime DEFAULT NULL,\n  `balance_from_previous_bill` decimal(10,2) DEFAULT NULL,\n  `payment_received_previous` decimal(10,2) DEFAULT NULL,\n  `remaining_balance_previous` decimal(10,2) DEFAULT NULL,\n  `monthly_service_fee` decimal(10,2) DEFAULT NULL,\n  `others_and_basic_charges` decimal(10,2) DEFAULT NULL,\n  `vat` decimal(10,2) DEFAULT NULL,\n  `due_date` datetime DEFAULT NULL,\n  `amount_due` decimal(10,2) DEFAULT NULL,\n  `total_amount_due` decimal(10,2) DEFAULT NULL,\n  `print_link` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `service_charge` decimal(10,2) DEFAULT NULL,\n  `rebate` decimal(10,2) DEFAULT NULL,\n  `discounts` decimal(10,2) DEFAULT NULL,\n  `staggered` decimal(10,2) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `pro_rate_start` date DEFAULT NULL,\n  `pro_rate` decimal(10,2) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `soa_account_no_fk` (`account_no`)\n) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `statement_of_accounts` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `account_no` varchar(255) NOT NULL,\n  `statement_date` datetime DEFAULT NULL,\n  `balance_from_previous_bill` decimal(10,2) DEFAULT NULL,\n  `payment_received_previous` decimal(10,2) DEFAULT NULL,\n  `remaining_balance_previous` decimal(10,2) DEFAULT NULL,\n  `monthly_service_fee` decimal(10,2) DEFAULT NULL,\n  `others_and_basic_charges` decimal(10,2) DEFAULT NULL,\n  `vat` decimal(10,2) DEFAULT NULL,\n  `due_date` datetime DEFAULT NULL,\n  `amount_due` decimal(10,2) DEFAULT NULL,\n  `total_amount_due` decimal(10,2) DEFAULT NULL,\n  `print_link` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `service_charge` decimal(10,2) DEFAULT NULL,\n  `rebate` decimal(10,2) DEFAULT NULL,\n  `discounts` decimal(10,2) DEFAULT NULL,\n  `staggered` decimal(10,2) DEFAULT NULL,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `pro_rate_start` date DEFAULT NULL,\n  `pro_rate` decimal(10,2) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `soa_account_no_fk` (`account_no`)\n) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "status_remarks_list": {
         "columns": [
@@ -17730,7 +18132,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `technical_details` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `username_status` varchar(100) DEFAULT NULL,\n  `connection_type` varchar(100) DEFAULT NULL,\n  `router_model` varchar(255) DEFAULT NULL,\n  `router_modem_sn` varchar(255) DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `lcp` varchar(255) DEFAULT NULL,\n  `nap` varchar(255) DEFAULT NULL,\n  `port` varchar(255) DEFAULT NULL,\n  `vlan` varchar(255) DEFAULT NULL,\n  `lcpnap` varchar(255) DEFAULT NULL,\n  `usage_type` varchar(255) DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `technical_details_username_unique` (`username`),\n  KEY `technical_details_account_id_foreign` (`account_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `technical_details` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `account_id` bigint(20) unsigned DEFAULT NULL,\n  `account_no` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  `username_status` varchar(100) DEFAULT NULL,\n  `connection_type` varchar(100) DEFAULT NULL,\n  `router_model` varchar(255) DEFAULT NULL,\n  `router_modem_sn` varchar(255) DEFAULT NULL,\n  `ip_address` varchar(45) DEFAULT NULL,\n  `lcp` varchar(255) DEFAULT NULL,\n  `nap` varchar(255) DEFAULT NULL,\n  `port` varchar(255) DEFAULT NULL,\n  `vlan` varchar(255) DEFAULT NULL,\n  `lcpnap` varchar(255) DEFAULT NULL,\n  `usage_type` varchar(255) DEFAULT NULL,\n  `created_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_by` varchar(255) DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `technical_details_username_unique` (`username`),\n  KEY `technical_details_account_id_foreign` (`account_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "technicians": {
         "columns": [
@@ -18682,6 +19084,17 @@
                 "Extra": "",
                 "Privileges": "select,insert,update,references",
                 "Comment": ""
+            },
+            {
+                "Field": "push_token",
+                "Type": "varchar(255)",
+                "Collation": "utf8mb4_unicode_ci",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": "",
+                "Privileges": "select,insert,update,references",
+                "Comment": ""
             }
         ],
         "indexes": [
@@ -18692,7 +19105,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "id",
                 "Collation": "A",
-                "Cardinality": 8,
+                "Cardinality": 10,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -18708,7 +19121,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "username",
                 "Collation": "A",
-                "Cardinality": 8,
+                "Cardinality": 10,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "",
@@ -18740,7 +19153,7 @@
                 "Seq_in_index": 1,
                 "Column_name": "role_id",
                 "Collation": "A",
-                "Cardinality": 8,
+                "Cardinality": 10,
                 "Sub_part": null,
                 "Packed": null,
                 "Null": "YES",
@@ -18783,7 +19196,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `users` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `username` varchar(255) NOT NULL,\n  `password_hash` varchar(255) NOT NULL,\n  `email_address` varchar(255) DEFAULT NULL,\n  `first_name` varchar(255) DEFAULT NULL,\n  `middle_initial` char(10) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `contact_number` varchar(50) DEFAULT NULL,\n  `organization_id` bigint(20) unsigned DEFAULT NULL,\n  `role_id` bigint(20) unsigned DEFAULT NULL,\n  `agent_id` varchar(50) DEFAULT NULL,\n  `group_id` bigint(20) unsigned DEFAULT NULL,\n  `status` varchar(100) DEFAULT NULL,\n  `last_login` datetime DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `darkmode` varchar(50) DEFAULT NULL,\n  `active` tinyint(1) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `users_username_unique` (`username`),\n  KEY `users_organization_id_foreign` (`organization_id`),\n  KEY `users_role_id_foreign` (`role_id`),\n  KEY `users_group_id_foreign` (`group_id`),\n  KEY `users_created_by_user_id_foreign` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=8651 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        "create_statement": "CREATE TABLE `users` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `username` varchar(255) NOT NULL,\n  `password_hash` varchar(255) NOT NULL,\n  `email_address` varchar(255) DEFAULT NULL,\n  `first_name` varchar(255) DEFAULT NULL,\n  `middle_initial` char(10) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `contact_number` varchar(50) DEFAULT NULL,\n  `organization_id` bigint(20) unsigned DEFAULT NULL,\n  `role_id` bigint(20) unsigned DEFAULT NULL,\n  `agent_id` varchar(50) DEFAULT NULL,\n  `group_id` bigint(20) unsigned DEFAULT NULL,\n  `status` varchar(100) DEFAULT NULL,\n  `last_login` datetime DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  `created_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `updated_by_user_id` bigint(20) unsigned DEFAULT NULL,\n  `darkmode` varchar(50) DEFAULT NULL,\n  `active` tinyint(1) DEFAULT NULL,\n  `push_token` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `users_username_unique` (`username`),\n  KEY `users_organization_id_foreign` (`organization_id`),\n  KEY `users_role_id_foreign` (`role_id`),\n  KEY `users_group_id_foreign` (`group_id`),\n  KEY `users_created_by_user_id_foreign` (`created_by_user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=8653 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
     },
     "user_groups": {
         "columns": [
@@ -19323,7 +19736,7 @@
             }
         ],
         "fks": [],
-        "create_statement": "CREATE TABLE `worker_locks` (\n  `id` bigint(20) NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `lock_name` varchar(100) DEFAULT NULL,\n  `locked_at` timestamp NULL DEFAULT NULL,\n  `locked_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `lock_name` (`lock_name`)\n) ENGINE=InnoDB AUTO_INCREMENT=94412 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
+        "create_statement": "CREATE TABLE `worker_locks` (\n  `id` bigint(20) NOT NULL AUTO_INCREMENT,\n  `organization_id` bigint(50) DEFAULT NULL,\n  `lock_name` varchar(100) DEFAULT NULL,\n  `locked_at` timestamp NULL DEFAULT NULL,\n  `locked_by` varchar(255) DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `lock_name` (`lock_name`)\n) ENGINE=InnoDB AUTO_INCREMENT=103032 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci"
     },
     "work_order": {
         "columns": [

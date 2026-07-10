@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Services\GoogleDriveService;
 use App\Services\PppoeUsernameService;
+use App\Services\RadiusServerResolver;
 use App\Models\RadiusConfig;
 use App\Models\ActivityLog;
 use App\Events\JobOrderViewingUpdate;
@@ -1752,18 +1753,30 @@ class JobOrderController extends Controller
             ]);
 
             $organizationId = $jobOrder->organization_id ?? auth()->user()?->organization_id ?? null;
-            $radiusConfig = $organizationId
-                ? RadiusConfig::where('organization_id', $organizationId)->first()
-                    ?? RadiusConfig::whereNull('organization_id')->first()
-                : RadiusConfig::whereNull('organization_id')->first();
-            
+
+            // Select the RADIUS server by the customer's city. The account does not exist
+            // on any server yet, so placement is decided deliberately from the city mapping
+            // (see RadiusServerResolver::CITY_SERVER_MAP) rather than by a failover lookup.
+            $city = $jobOrder->application?->city ?? null;
+            $radiusConfig = app(RadiusServerResolver::class)->resolveForCity($city, $organizationId);
+
             if (!$radiusConfig) {
-                \Log::channel('radiusrelated')->error('RADIUS configuration not found in database for JobOrder: ' . $id);
+                \Log::channel('radiusrelated')->error('RADIUS configuration not found in database for JobOrder: ' . $id, [
+                    'job_order_id' => $id,
+                    'city'         => $city,
+                ]);
                 return [
                     'success' => false,
                     'message' => 'RADIUS configuration not found. Please configure RADIUS settings first.',
                 ];
             }
+
+            \Log::channel('radiusrelated')->info('RADIUS server selected for JobOrder account creation', [
+                'job_order_id'     => $id,
+                'city'             => $city,
+                'radius_config_id' => $radiusConfig->id,
+                'radius_ip'        => $radiusConfig->ip,
+            ]);
 
             $radiusUrl = $radiusConfig->ssl_type . '://' . $radiusConfig->ip . ':' . $radiusConfig->port . '/rest/user-manage/user';
             $radiusUsername = $radiusConfig->username;
@@ -1853,7 +1866,9 @@ class JobOrderController extends Controller
                     \Log::channel('radiusrelated')->error('RADIUS API Error for JobOrder: ' . $id, [
                         'status' => $statusCode,
                         'response' => $response->body(),
-                        'payload' => $payload
+                        'payload' => $payload,
+                        'radius_config_id' => $radiusConfig->id,
+                        'radius_ip' => $radiusConfig->ip,
                     ]);
                     if (!$credentialsExist) {
                         return [
@@ -1865,9 +1880,11 @@ class JobOrderController extends Controller
                 }
             } catch (\Exception $mikrotikException) {
                 $radiusError = $mikrotikException->getMessage();
-                \Log::channel('radiusrelated')->error('RADIUS Connection Exception for JobOrder: ' . $id, [
+                \Log::channel('radiusrelated')->error('RADIUS Connection Exception for JobOrder: ' . $id . ' (selected server unavailable)', [
                     'error' => $radiusError,
-                    'trace' => $mikrotikException->getTraceAsString()
+                    'trace' => $mikrotikException->getTraceAsString(),
+                    'radius_config_id' => $radiusConfig->id,
+                    'radius_ip' => $radiusConfig->ip,
                 ]);
                 if (!$credentialsExist) {
                     return [
